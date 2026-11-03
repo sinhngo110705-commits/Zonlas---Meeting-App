@@ -1,0 +1,326 @@
+@import "tailwindcss";
+
+:root {
+  /* Zonlas Signature Brand Palette */
+  --brand-crimson: #C41230;
+  --brand-crimson-hover: #A00E26;
+  --brand-crimson-light: #FF2D4E;
+  --brand-crimson-subtle: #FFF1F2;
+  --brand-crimson-glow: rgba(196, 18, 48, 0.2);
+
+  --brand-gold: #C5A059;
+  --brand-gold-light: #F0C84A;
+  --brand-gold-subtle: #FDF9F0;
+  --brand-gold-glow: rgba(197, 160, 89, 0.2);
+
+  /* Studio Obsidian Hardware Panels */
+  --obsidian-dark: #070A10;
+  --obsidian-surface: #0E131F;
+  --obsidian-card: #141B2B;
+  --obsidian-border: #1E283D;
+  --obsidian-border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* Page Canvas & Editorial Clean Neutrals */
+  --bg-page: #FAFBFD;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F3F5F9;
+  --bg-inset: #EBF0F7;
+
+  --border-light: #E2E8F0;
+  --border-medium: #CBD5E1;
+  --border-focus: #C41230;
+
+  --text-primary: #0A0D14;
+  --text-secondary: #3B4858;
+  --text-muted: #64748B;
+  --text-faint: #94A3B8;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  --shadow-studio: 0 25px 60px -15px rgba(0, 0, 0, 0.5), 0 0 50px rgba(196, 18, 48, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Primary Crimson Button with subtle glow, shimmer & nested icon circle */
+.btn-crimson {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1.375rem;
+  background-color: var(--brand-crimson);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(196, 18, 48, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-crimson::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: all 0.6s ease;
+}
+
+.btn-crimson:hover::after {
+  left: 100%;
+}
+
+.btn-crimson:hover {
+  background-color: var(--brand-crimson-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(196, 18, 48, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.btn-crimson:active {
+  transform: scale(0.98);
+}
+
+/* Button-in-Button inner icon pill */
+.btn-icon-pill {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-crimson:hover .btn-icon-pill {
+  transform: translate(2px, -1px);
+}
+
+/* Secondary Clean Button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.375rem;
+  background-color: #FFFFFF;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-medium);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-subtle);
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Dark Studio Button */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.375rem;
+  background-color: var(--obsidian-dark);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 9999px;
+  border: 1px solid var(--obsidian-border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-dark:hover {
+  background-color: #000000;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Studio Broadcast Window Cockpit Frame with Laser Accent */
+.studio-cockpit-frame {
+  position: relative;
+  background: #070A10;
+  border: 1px solid #1E283D;
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6), 0 0 50px rgba(196, 18, 48, 0.15);
+  overflow: hidden;
+}
+
+.studio-cockpit-frame::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C41230, #C5A059, #FF2D4E, transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Linear-style Spotlight Card with smooth interactive glow */
+.spotlight-card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.spotlight-card:hover {
+  border-color: rgba(196, 18, 48, 0.35);
+  box-shadow: 0 16px 36px -8px rgba(196, 18, 48, 0.1), 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Technical Bracket Corner Marks */
+.bracket-corner {
+  position: relative;
+}
+
+.bracket-corner::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--brand-crimson);
+  border-left: 2px solid var(--brand-crimson);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.bracket-corner::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--brand-crimson);
+  border-right: 2px solid var(--brand-crimson);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Animated Sound Waveform Bars */
+@keyframes soundwave {
+  0%, 100% { height: 15%; }
+  50% { height: 95%; }
+}
+
+.animate-wave-1 { animation: soundwave 1.2s ease-in-out infinite; }
+.animate-wave-2 { animation: soundwave 0.85s ease-in-out infinite 0.15s; }
+.animate-wave-3 { animation: soundwave 1.4s ease-in-out infinite 0.35s; }
+.animate-wave-4 { animation: soundwave 1.05s ease-in-out infinite 0.1s; }
+.animate-wave-5 { animation: soundwave 0.75s ease-in-out infinite 0.25s; }
+
+/* Subtle pulse glow */
+@keyframes ambientGlow {
+  0%, 100% { opacity: 0.35; transform: scale(1) translateY(0); }
+  50% { opacity: 0.7; transform: scale(1.06) translateY(-8px); }
+}
+
+.ambient-glow-pulse {
+  animation: ambientGlow 9s ease-in-out infinite;
+}
+
+/* Light Beam Scanner */
+@keyframes beamScan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-beam-scan {
+  animation: beamScan 3.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Shimmer Text */
+.text-shimmer {
+  background: linear-gradient(90deg, #0A0D14 0%, #C41230 50%, #0A0D14 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: textShine 6s linear infinite;
+}
+
+@keyframes textShine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Floating emoji reaction animation */
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.6) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-60px) scale(1.1) rotate(10deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-130px) scale(0.9) rotate(-10deg);
+  }
+}
+
+.reaction-particle {
+  position: absolute;
+  pointer-events: none;
+  animation: floatUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
